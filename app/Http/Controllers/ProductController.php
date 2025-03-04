@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -35,7 +36,7 @@ class ProductController extends Controller
         }
 
         Product::create($validatedData);
-        return to_route('products.index')->with('success','le produit est creer');
+        return to_route('dashboard')->with('success', 'le produit est creer');
     }
 
     /**
@@ -43,23 +44,37 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product = Product::findOrFail($product->id);
+        return view('product.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $product = new Product();
-        return view('product.update', compact('product'));    }
+        $product = Product::findOrFail($id);
+
+        return view('product.edit', compact('product'));
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $validatedData = $request->validated();
+
+        if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image si elle existe
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $validatedData['image'] = $request->file('image')->store('product', 'public');
+        }
+
+        $product->update($validatedData);
+        return to_route('dashboard')->with('success', 'Le produit a été mis à jour');
     }
 
     /**
@@ -68,10 +83,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-    
+
         return back()->with('success', 'Le produit a été supprimé avec succès.');
     }
-    
-
-   }
-
+}

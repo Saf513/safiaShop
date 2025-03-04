@@ -6,22 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
 {
-    
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name'=>'required|min:5',
-            'description'=>'required|min:20',
-            'quantity'=>'required|numeric',
-            'image'=>'required|image',
-            'price'=>'required|numeric',
-
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|string',
+            'quantity' => 'required|integer|min:1',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id'=>'required'
         ];
     }
 }

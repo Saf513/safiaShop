@@ -32,7 +32,7 @@
                             <div class="flex items-center justify-between">
                                 <span class="text-white font-bold text-lg">{{ number_format($product->price, 2) }} MAD</span>
                                 <button class="bg-luxury-gold text-black py-2 px-4 rounded-full font-bold hover:bg-white transition duration-300">
-                                    Ajouter au panier
+                                  <a href="{{route('cart.index')}}">  Ajouter au panier</a>
                                 </button>
                             </div>
                         </div>

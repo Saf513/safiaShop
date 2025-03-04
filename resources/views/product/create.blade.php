@@ -27,14 +27,14 @@
                         </div>
                     </div>
                     <div>
-                        <label for="category" class="sr-only">Catégorie</label>
-                        <select id="category" name="category" required class="mt-1 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-luxury-gold focus:border-luxury-gold focus:z-10 sm:text-sm">
-                            <option value="">Sélectionnez une catégorie</option>
-                            <option value="bijoux">Bijoux</option>
-                            <option value="montres">Montres</option>
-                            <option value="maroquinerie">Maroquinerie</option>
-                            <option value="pret-a-porter">Prêt-à-porter</option>
-                            <option value="accessoires">Accessoires</option>
+                        <label for="category_id" class="sr-only">Catégorie</label>
+                        <select id="category_id" name="category_id" required class="mt-1 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-luxury-gold focus:border-luxury-gold focus:z-10 sm:text-sm">
+                            <option value="0">Sélectionnez une catégorie</option>
+                            <option value="2">Bijoux</option>
+                            <option value="3">Montres</option>
+                            <option value="4">Maroquinerie</option>
+                            <option value="4">Prêt-à-porter</option>
+                            <option value="6">Accessoires</option>
                         </select>
                     </div>
                     <div>
@@ -42,10 +42,10 @@
                         <textarea id="description" name="description" rows="3" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-luxury-gold focus:border-luxury-gold focus:z-10 sm:text-sm" placeholder="Description du produit"></textarea>
                     </div>
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                        <div>
+                        {{-- <div>
                             <label for="product-sku" class="sr-only">SKU</label>
                             <input id="product-sku" name="product-sku" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-luxury-gold focus:border-luxury-gold focus:z-10 sm:text-sm" placeholder="SKU">
-                        </div>
+                        </div> --}}
                         <div>
                             <label for="quantity" class="sr-only">Stock</label>
                             <input id="quantity" name="quantity" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-luxury-gold focus:border-luxury-gold focus:z-10 sm:text-sm" placeholder="Stock">
